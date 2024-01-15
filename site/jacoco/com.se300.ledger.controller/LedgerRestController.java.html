@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LedgerRestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">final</a> &gt; <a href="index.source.html" class="el_package">com.se300.ledger.controller</a> &gt; <span class="el_source">LedgerRestController.java</span></div><h1>LedgerRestController.java</h1><pre class="source lang-java linenums">package com.se300.ledger.controller;
+
+import com.se300.ledger.model.Account;
+import com.se300.ledger.model.Transaction;
+import com.se300.ledger.service.LedgerAPI;
+import com.se300.ledger.service.LedgerException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@SecurityRequirement(name = &quot;basicAuth&quot;)
+<span class="fc" id="L18">public class LedgerRestController {</span>
+
+    @Autowired
+    private LedgerAPI ledger;
+
+    @Operation(summary = &quot;Create Account By Address&quot;, tags = {&quot;accounts&quot;})
+    @ApiResponses({
+            @ApiResponse(responseCode = &quot;200&quot;, content = {
+                    @Content(schema = @Schema(implementation = Account.class), mediaType = &quot;application/json&quot;)}),
+            @ApiResponse(responseCode = &quot;500&quot;, content = {@Content(schema = @Schema())})})
+    @PostMapping(&quot;/accounts&quot;)
+    public Account createAccount(@RequestBody Account account) throws LedgerException {
+<span class="fc" id="L30">        return ledger.createAccount(account.getAddress());</span>
+    }
+
+    @Operation(summary = &quot;Retrieve Account By Id&quot;, tags = {&quot;accounts&quot;})
+    @ApiResponses({
+            @ApiResponse(responseCode = &quot;200&quot;, content = {
+                    @Content(schema = @Schema(implementation = Account.class), mediaType = &quot;application/json&quot;)}),
+            @ApiResponse(responseCode = &quot;204&quot;, description = &quot;There is no account with such address&quot;, content = {
+                    @Content(schema = @Schema())}),
+            @ApiResponse(responseCode = &quot;500&quot;, content = {@Content(schema = @Schema())})})
+    @GetMapping(&quot;/accounts/{address}&quot;)
+    public Account getAccount(@PathVariable String address) throws LedgerException {
+<span class="fc" id="L42">        return ledger.getUncommittedBlock().getAccount(address);</span>
+    }
+
+    public Transaction getTransaction(String transactionId){
+        //TODO: Implement Transaction Retrieval REST Method
+
+
+<span class="nc" id="L49">        return null;</span>
+    }
+
+    public String processTransaction(Transaction transaction){
+
+        //TODO: Implement Transaction Processing REST Method
+<span class="nc" id="L55">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

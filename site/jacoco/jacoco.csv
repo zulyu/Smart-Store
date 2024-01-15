@@ -1,0 +1,14 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+final,com.se300.ledger.controller,CanaryController,9,3,0,0,2,1,1,1,1,1
+final,com.se300.ledger.controller,LedgerRestController,4,15,0,0,2,3,2,3,2,3
+final,com.se300.ledger.config,PasswordEncoderConfiguration,0,7,0,0,0,2,0,2,0,2
+final,com.se300.ledger.config,LedgerConfig,0,8,0,0,0,2,0,2,0,2
+final,com.se300.ledger.config,ApplicationSecurityConfig,3,62,0,0,2,19,0,6,0,6
+final,com.se300.ledger.config,OpenAPIConfig,0,52,0,0,0,14,0,2,0,2
+final,com.se300.ledger.model,Block,14,53,0,0,6,17,4,9,4,9
+final,com.se300.ledger.model,Transaction,37,132,7,9,1,35,8,17,1,16
+final,com.se300.ledger.model,Account,2,77,2,6,0,17,2,11,0,9
+final,com.se300.ledger.model,MerkleTrees,5,145,0,10,3,33,0,10,0,5
+final,com.se300.ledger.service,LedgerException,14,9,0,0,6,4,4,1,4,1
+final,com.se300.ledger.service,Ledger,233,354,29,29,56,76,29,20,10,10
+final,com.se300.ledger,SmartStoreApplication,5,3,0,0,2,1,1,1,1,1
